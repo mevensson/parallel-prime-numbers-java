@@ -1,0 +1,10 @@
+# Gradle ignores
+**/.gradle/
+**/build/
+
+# Eclipse Buildship ignores
+**/.settings/
+**/.classpath
+**/.project
+
+**/bin/
