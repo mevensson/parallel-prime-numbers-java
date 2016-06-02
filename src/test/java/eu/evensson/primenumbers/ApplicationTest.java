@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class MyTest {
+public class ApplicationTest {
 	@Test
 	public void shouldSucceed() throws Exception {
 		assertThat(true, is(true));
