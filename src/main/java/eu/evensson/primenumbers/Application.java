@@ -16,12 +16,29 @@ public class Application {
 	}
 
 	public void run(final String[] args) {
-		if (args.length != 1) {
-			printer.print(USAGE);
+		if (!isCorrectNumberOfArguments(args)) {
+			printUsage();
 			return;
 		}
-		final long maxPrime = Long.parseLong(args[0]);
+		final long maxPrime = parseMaxPrime(args);
 		final long numPrimes = primeFinder.countPrimes(maxPrime);
+		printNumberOfPrimes(maxPrime, numPrimes);
+	}
+
+	private boolean isCorrectNumberOfArguments(final String[] args) {
+		return args.length == 1;
+	}
+
+	private void printUsage() {
+		printer.print(USAGE);
+	}
+
+	private long parseMaxPrime(final String[] args) {
+		return Long.parseLong(args[0]);
+	}
+
+	private void printNumberOfPrimes(final long maxPrime,
+			final long numPrimes) {
 		printer.print(String.format(NUM_PRIMES_FORMAT, maxPrime, numPrimes));
 	}
 
