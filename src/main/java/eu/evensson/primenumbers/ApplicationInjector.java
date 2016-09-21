@@ -7,7 +7,7 @@ public class ApplicationInjector {
 	}
 
 	private static PrimeCounter injectPrimeCounter() {
-		return maxPrime -> 0;
+		return new NaivePrimeCounter();
 	}
 
 	private static Printer injectPrinter() {
