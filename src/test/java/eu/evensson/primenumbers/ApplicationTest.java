@@ -30,7 +30,7 @@ public class ApplicationTest {
 
 		application.run(new String[] { Long.toString(MAX_PRIME) });
 
-		verify(printer).print("Number of primes less than " + MAX_PRIME
+		verify(printer).print("Number of primes less than or equal to " + MAX_PRIME
 				+ " are " + NUM_PRIMES + ".");
 	}
 

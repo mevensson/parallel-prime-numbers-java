@@ -2,7 +2,7 @@ package eu.evensson.primenumbers;
 
 public class Application {
 	private static final String NUM_PRIMES_FORMAT =
-			"Number of primes less than %d are %d.";
+			"Number of primes less than or equal to %d are %d.";
 
 	private static final String USAGE =
 			"Usage: prime-numbers <max_prime>";
