@@ -12,11 +12,16 @@ public class ApplicationInjector {
 	private static Map<String, PrimeCounter> injectPrimeCounterMap() {
 		final Map<String, PrimeCounter> primeCounterMap = new HashMap<>();
 		primeCounterMap.put("naive", injectNaivePrimeCounter());
+		primeCounterMap.put("opt_naive", injectOptimizedNaivePrimeCounter());
 		return primeCounterMap;
 	}
 
 	private static PrimeCounter injectNaivePrimeCounter() {
 		return new NaivePrimeCounter();
+	}
+
+	private static PrimeCounter injectOptimizedNaivePrimeCounter() {
+		return new OptimizedNaivePrimeCounter();
 	}
 
 	private static Printer injectPrinter() {
