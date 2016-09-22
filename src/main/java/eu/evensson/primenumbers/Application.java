@@ -1,5 +1,7 @@
 package eu.evensson.primenumbers;
 
+import java.util.Map;
+
 public class Application {
 	private static final String NUM_PRIMES_FORMAT =
 			"Number of primes less than or equal to %d are %d.";
@@ -7,11 +9,11 @@ public class Application {
 	private static final String USAGE =
 			"Usage: prime-numbers <max_prime>";
 
-	private final PrimeCounter primeFinder;
+	private final Map<String, PrimeCounter> primeCounterMap;
 	private final Printer printer;
 
-	public Application(final PrimeCounter primeFinder, final Printer printer) {
-		this.primeFinder = primeFinder;
+	public Application(final Map<String, PrimeCounter> primeCounterMap, final Printer printer) {
+		this.primeCounterMap = primeCounterMap;
 		this.printer = printer;
 	}
 
@@ -21,12 +23,14 @@ public class Application {
 			return;
 		}
 		final long maxPrime = parseMaxPrime(args);
-		final long numPrimes = primeFinder.countPrimes(maxPrime);
+		final String algorithm = args[1];
+		final PrimeCounter primeCounter = primeCounterMap.get(algorithm);
+		final long numPrimes = primeCounter.countPrimes(maxPrime);
 		printNumberOfPrimes(maxPrime, numPrimes);
 	}
 
 	private boolean isCorrectNumberOfArguments(final String[] args) {
-		return args.length == 1;
+		return args.length == 2;
 	}
 
 	private void printUsage() {

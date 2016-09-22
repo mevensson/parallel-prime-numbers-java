@@ -1,12 +1,21 @@
 package eu.evensson.primenumbers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ApplicationInjector {
 
 	public static Application injectApplication(final ApplicationScope scope) {
-		return new Application(injectPrimeCounter(), injectPrinter());
+		return new Application(injectPrimeCounterMap(), injectPrinter());
 	}
 
-	private static PrimeCounter injectPrimeCounter() {
+	private static Map<String, PrimeCounter> injectPrimeCounterMap() {
+		final Map<String, PrimeCounter> primeCounterMap = new HashMap<>();
+		primeCounterMap.put("naive", injectNaivePrimeCounter());
+		return primeCounterMap;
+	}
+
+	private static PrimeCounter injectNaivePrimeCounter() {
 		return new NaivePrimeCounter();
 	}
 

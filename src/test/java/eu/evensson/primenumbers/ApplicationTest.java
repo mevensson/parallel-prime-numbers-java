@@ -5,6 +5,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 
 public class ApplicationTest {
@@ -13,22 +16,34 @@ public class ApplicationTest {
 
 	private static final String USAGE_STRING = "Usage: prime-numbers <max_prime>";
 
-	private final PrimeCounter primeCounter = mock(PrimeCounter.class);
+	private final PrimeCounter firstPrimeCounter = mock(PrimeCounter.class);
+	private final PrimeCounter secondPrimeCounter = mock(PrimeCounter.class);
+	private final Map<String, PrimeCounter> primeCounterMap = new HashMap<String, PrimeCounter>() {{
+		put("first", firstPrimeCounter);
+		put("second", secondPrimeCounter);
+	}};
 	private final Printer printer = mock(Printer.class);
-	private final Application application = new Application(primeCounter, printer);
+	private final Application application = new Application(primeCounterMap, printer);
 
 	@Test
-	public void shouldCallFindPrimeWithFirstArgument() throws Exception {
-		application.run(new String[] { Long.toString(MAX_PRIME) });
+	public void shouldCallFindPrimeWithFirstArgOnAlgorithmMatchingSecondArg() throws Exception {
+		application.run(new String[] { Long.toString(MAX_PRIME), "first" });
 
-		verify(primeCounter).countPrimes(MAX_PRIME);
+		verify(firstPrimeCounter).countPrimes(MAX_PRIME);
+	}
+
+	@Test
+	public void shouldCallFindPrimeWithFirstArgOnAlgorithmMatchingSecondArg2() throws Exception {
+		application.run(new String[] { Long.toString(MAX_PRIME), "second" });
+
+		verify(secondPrimeCounter).countPrimes(MAX_PRIME);
 	}
 
 	@Test
 	public void shouldPrintNumberOfPrimes() throws Exception {
-		when(primeCounter.countPrimes(anyLong())).thenReturn(NUM_PRIMES);
+		when(firstPrimeCounter.countPrimes(anyLong())).thenReturn(NUM_PRIMES);
 
-		application.run(new String[] { Long.toString(MAX_PRIME) });
+		application.run(new String[] { Long.toString(MAX_PRIME), "first" });
 
 		verify(printer).print("Number of primes less than or equal to " + MAX_PRIME
 				+ " are " + NUM_PRIMES + ".");
@@ -36,14 +51,14 @@ public class ApplicationTest {
 
 	@Test
 	public void shouldPrintUsageWhenTooFewArguments() throws Exception {
-		application.run(new String[] {});
+		application.run(new String[] { "1"});
 
 		verify(printer).print(USAGE_STRING);
 	}
 
 	@Test
 	public void shouldPrintUsageWhenTooManyArguments() throws Exception {
-		application.run(new String[] { "1", "2"});
+		application.run(new String[] { "1", "2", "3"});
 
 		verify(printer).print(USAGE_STRING);
 	}
