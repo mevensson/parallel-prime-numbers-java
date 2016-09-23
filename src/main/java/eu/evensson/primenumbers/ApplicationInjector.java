@@ -13,6 +13,7 @@ public class ApplicationInjector {
 		final Map<String, PrimeCounter> primeCounterMap = new HashMap<>();
 		primeCounterMap.put("naive", injectNaivePrimeCounter());
 		primeCounterMap.put("opt_naive", injectOptimizedNaivePrimeCounter());
+		primeCounterMap.put("remembering", injectRememberingPrimeCounter());
 		return primeCounterMap;
 	}
 
@@ -22,6 +23,10 @@ public class ApplicationInjector {
 
 	private static PrimeCounter injectOptimizedNaivePrimeCounter() {
 		return new OptimizedNaivePrimeCounter();
+	}
+
+	private static PrimeCounter injectRememberingPrimeCounter() {
+		return new RememberingPrimeCounter();
 	}
 
 	private static Printer injectPrinter() {
