@@ -14,6 +14,7 @@ public class ApplicationInjector {
 		primeCounterMap.put("naive", injectNaivePrimeCounter());
 		primeCounterMap.put("opt_naive", injectOptimizedNaivePrimeCounter());
 		primeCounterMap.put("remembering", injectRememberingPrimeCounter());
+		primeCounterMap.put("bitset_sieve", injectBitSetSievePrimeCounter());
 		return primeCounterMap;
 	}
 
@@ -27,6 +28,10 @@ public class ApplicationInjector {
 
 	private static PrimeCounter injectRememberingPrimeCounter() {
 		return new RememberingPrimeCounter();
+	}
+
+	private static PrimeCounter injectBitSetSievePrimeCounter() {
+		return new BitSetSievePrimeCounter();
 	}
 
 	private static Printer injectPrinter() {
