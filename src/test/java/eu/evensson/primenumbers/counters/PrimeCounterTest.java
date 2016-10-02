@@ -10,14 +10,17 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import eu.evensson.primenumbers.counters.primelists.BitSetPrimeList;
+import eu.evensson.primenumbers.counters.primelists.LongArrayPrimeList;
+
 @RunWith(Parameterized.class)
 public class PrimeCounterTest {
 
 	@Parameters
 	public static Iterable<? extends Object> primeCounters() {
 		return asList(
-				new BitSetSievePrimeCounter(),
-				new LongArraySievePrimeCounter(),
+				new SievePrimeCounter(maxPrime -> new BitSetPrimeList(maxPrime)),
+				new SievePrimeCounter(maxPrime -> new LongArrayPrimeList(maxPrime)),
 				new NaivePrimeCounter(),
 				new OptimizedNaivePrimeCounter(),
 				new RememberingPrimeCounter());

@@ -2,13 +2,16 @@ package eu.evensson.primenumbers;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
-import eu.evensson.primenumbers.counters.BitSetSievePrimeCounter;
-import eu.evensson.primenumbers.counters.LongArraySievePrimeCounter;
 import eu.evensson.primenumbers.counters.NaivePrimeCounter;
 import eu.evensson.primenumbers.counters.OptimizedNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.PrimeCounter;
 import eu.evensson.primenumbers.counters.RememberingPrimeCounter;
+import eu.evensson.primenumbers.counters.SievePrimeCounter;
+import eu.evensson.primenumbers.counters.primelists.BitSetPrimeList;
+import eu.evensson.primenumbers.counters.primelists.LongArrayPrimeList;
+import eu.evensson.primenumbers.counters.primelists.PrimeList;
 
 public class ApplicationInjector {
 
@@ -39,11 +42,19 @@ public class ApplicationInjector {
 	}
 
 	private static PrimeCounter injectBitSetSievePrimeCounter() {
-		return new BitSetSievePrimeCounter();
+		return new SievePrimeCounter(injectBitSetPrimeListFactory());
+	}
+
+	private static Function<Long, PrimeList> injectBitSetPrimeListFactory() {
+		return maxPrime -> new BitSetPrimeList(maxPrime);
 	}
 
 	private static PrimeCounter injectLongArraySievePrimeCounter() {
-		return new LongArraySievePrimeCounter();
+		return new SievePrimeCounter(injectLongArrayPrimeListFactory());
+	}
+
+	private static Function<Long, PrimeList> injectLongArrayPrimeListFactory() {
+		return maxPrime -> new LongArrayPrimeList(maxPrime);
 	}
 
 	private static Printer injectPrinter() {
