@@ -1,4 +1,4 @@
-package eu.evensson.primenumbers;
+package eu.evensson.primenumbers.counters;
 
 public class LongArraySievePrimeCounter implements PrimeCounter {
 

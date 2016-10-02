@@ -2,6 +2,8 @@ package eu.evensson.primenumbers;
 
 import java.util.Map;
 
+import eu.evensson.primenumbers.counters.PrimeCounter;
+
 public class Application {
 	private static final String NUM_PRIMES_FORMAT =
 			"Number of primes less than or equal to %d are %d.";

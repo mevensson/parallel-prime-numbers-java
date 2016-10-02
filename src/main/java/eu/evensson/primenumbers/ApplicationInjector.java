@@ -3,6 +3,13 @@ package eu.evensson.primenumbers;
 import java.util.HashMap;
 import java.util.Map;
 
+import eu.evensson.primenumbers.counters.BitSetSievePrimeCounter;
+import eu.evensson.primenumbers.counters.LongArraySievePrimeCounter;
+import eu.evensson.primenumbers.counters.NaivePrimeCounter;
+import eu.evensson.primenumbers.counters.OptimizedNaivePrimeCounter;
+import eu.evensson.primenumbers.counters.PrimeCounter;
+import eu.evensson.primenumbers.counters.RememberingPrimeCounter;
+
 public class ApplicationInjector {
 
 	public static Application injectApplication(final ApplicationScope scope) {

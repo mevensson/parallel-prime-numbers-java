@@ -1,13 +1,15 @@
-package eu.evensson.primenumbers;
+package eu.evensson.primenumbers.counters;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class BitSetSievePrimeCounterTest {
+import eu.evensson.primenumbers.counters.LongArraySievePrimeCounter;
 
-	private final BitSetSievePrimeCounter primeCounter = new BitSetSievePrimeCounter();
+public class LongArraySievePrimeCounterTest {
+
+	private final LongArraySievePrimeCounter primeCounter = new LongArraySievePrimeCounter();
 
 	@Test
 	public void shouldCountPrimes() {

@@ -1,13 +1,15 @@
-package eu.evensson.primenumbers;
+package eu.evensson.primenumbers.counters;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class OptimizedNaivePrimeCounterTest {
+import eu.evensson.primenumbers.counters.RememberingPrimeCounter;
 
-	private final OptimizedNaivePrimeCounter primeCounter = new OptimizedNaivePrimeCounter();
+public class RememberingPrimeCounterTest {
+
+	private final RememberingPrimeCounter primeCounter = new RememberingPrimeCounter();
 
 	@Test
 	public void shouldCountPrimes() {

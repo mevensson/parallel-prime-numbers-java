@@ -10,6 +10,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import eu.evensson.primenumbers.counters.PrimeCounter;
+
 public class ApplicationTest {
 	private static final long MAX_PRIME = 42;
 	private static final long NUM_PRIMES = 13;

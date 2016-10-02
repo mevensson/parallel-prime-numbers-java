@@ -1,4 +1,4 @@
-package eu.evensson.primenumbers;
+package eu.evensson.primenumbers.counters;
 
 import java.util.LinkedList;
 import java.util.List;
