@@ -15,6 +15,7 @@ public class ApplicationInjector {
 		primeCounterMap.put("opt_naive", injectOptimizedNaivePrimeCounter());
 		primeCounterMap.put("remembering", injectRememberingPrimeCounter());
 		primeCounterMap.put("bitset_sieve", injectBitSetSievePrimeCounter());
+		primeCounterMap.put("longarr_sieve", injectLongArraySievePrimeCounter());
 		return primeCounterMap;
 	}
 
@@ -32,6 +33,10 @@ public class ApplicationInjector {
 
 	private static PrimeCounter injectBitSetSievePrimeCounter() {
 		return new BitSetSievePrimeCounter();
+	}
+
+	private static PrimeCounter injectLongArraySievePrimeCounter() {
+		return new LongArraySievePrimeCounter();
 	}
 
 	private static Printer injectPrinter() {
