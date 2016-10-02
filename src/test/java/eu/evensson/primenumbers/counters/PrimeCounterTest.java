@@ -1,15 +1,30 @@
 package eu.evensson.primenumbers.counters;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
-import eu.evensson.primenumbers.counters.LongArraySievePrimeCounter;
+@RunWith(Parameterized.class)
+public class PrimeCounterTest {
 
-public class LongArraySievePrimeCounterTest {
+	@Parameters
+	public static Iterable<? extends Object> primeCounters() {
+		return asList(
+				new BitSetSievePrimeCounter(),
+				new LongArraySievePrimeCounter(),
+				new NaivePrimeCounter(),
+				new OptimizedNaivePrimeCounter(),
+				new RememberingPrimeCounter());
+	}
 
-	private final LongArraySievePrimeCounter primeCounter = new LongArraySievePrimeCounter();
+	@Parameter
+	public PrimeCounter primeCounter;
 
 	@Test
 	public void shouldCountPrimes() {
