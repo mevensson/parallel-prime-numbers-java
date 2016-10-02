@@ -2,8 +2,10 @@ package eu.evensson.primenumbers;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
 import java.util.function.Function;
 
+import eu.evensson.primenumbers.counters.FutureNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.NaivePrimeCounter;
 import eu.evensson.primenumbers.counters.OptimizedNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.PrimeCounter;
@@ -22,6 +24,14 @@ public class ApplicationInjector {
 	private static Map<String, PrimeCounter> injectPrimeCounterMap() {
 		final Map<String, PrimeCounter> primeCounterMap = new HashMap<>();
 		primeCounterMap.put("naive", injectNaivePrimeCounter());
+		primeCounterMap.put("future_naive_1", injectFutureNaivePrimeCounter(1));
+		primeCounterMap.put("future_naive_2", injectFutureNaivePrimeCounter(2));
+		primeCounterMap.put("future_naive_3", injectFutureNaivePrimeCounter(3));
+		primeCounterMap.put("future_naive_4", injectFutureNaivePrimeCounter(4));
+		primeCounterMap.put("future_naive_5", injectFutureNaivePrimeCounter(5));
+		primeCounterMap.put("future_naive_6", injectFutureNaivePrimeCounter(6));
+		primeCounterMap.put("future_naive_7", injectFutureNaivePrimeCounter(7));
+		primeCounterMap.put("future_naive_8", injectFutureNaivePrimeCounter(8));
 		primeCounterMap.put("opt_naive", injectOptimizedNaivePrimeCounter());
 		primeCounterMap.put("remembering", injectRememberingPrimeCounter());
 		primeCounterMap.put("bitset_sieve", injectBitSetSievePrimeCounter());
@@ -31,6 +41,10 @@ public class ApplicationInjector {
 
 	private static PrimeCounter injectNaivePrimeCounter() {
 		return new NaivePrimeCounter();
+	}
+
+	private static PrimeCounter injectFutureNaivePrimeCounter(final int threads) {
+		return new FutureNaivePrimeCounter(Executors.newWorkStealingPool(threads));
 	}
 
 	private static PrimeCounter injectOptimizedNaivePrimeCounter() {

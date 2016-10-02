@@ -4,6 +4,8 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.concurrent.Executors;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -22,6 +24,7 @@ public class PrimeCounterTest {
 				new SievePrimeCounter(maxPrime -> new BitSetPrimeList(maxPrime)),
 				new SievePrimeCounter(maxPrime -> new LongArrayPrimeList(maxPrime)),
 				new NaivePrimeCounter(),
+				new FutureNaivePrimeCounter(Executors.newWorkStealingPool()),
 				new OptimizedNaivePrimeCounter(),
 				new RememberingPrimeCounter());
 	}
