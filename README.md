@@ -2,17 +2,25 @@
 
 ## Naive
 
-| Algorithm     | threads |   10^5 | 2*10^5 | 3*10^5 | 4*10^5 | Speedup |
-| ------------- |--------:|-------:|-------:|-------:|-------:|--------:|
-| naive         |     n/a |    3.6 |     14 |     29 |     50 |
-| future_naive  |       1 |    3.8 |     13 |     28 |     49 |
-| future_naive  |       2 |    2.0 |    7.0 |     15 |     25 |    x1.9 |
-| future_naive  |       3 |    1.4 |    4.9 |     10 |     17 |    x2.8 |
-| future_naive  |       4 |    1.1 |    3.7 |    7.8 |     13 |    x3.6 |
-| future_naive  |       5 |    1.0 |    3.4 |    7.3 |     12 |    x3.9 |
-| future_naive  |       6 |    0.9 |    3.2 |    6.9 |     12 |    x4.1 |
-| future_naive  |       7 |    0.9 |    3.0 |    6.4 |     11 |    x4.3 |
-| future_naive  |       8 |    0.8 |    2.8 |    6.1 |     11 |    x4.6 |
+| Algorithm      | threads |   10^5 | 2*10^5 | 3*10^5 | 4*10^5 | Speedup |
+|----------------|--------:|-------:|-------:|-------:|-------:|--------:|
+| naive          |     n/a |    3.6 |     14 |     29 |     50 |
+| future_naive   |       1 |    3.8 |     13 |     28 |     49 |
+| future_naive   |       2 |    2.0 |    7.0 |     15 |     25 |    x1.9 |
+| future_naive   |       3 |    1.4 |    4.9 |     10 |     17 |    x2.8 |
+| future_naive   |       4 |    1.1 |    3.7 |    7.8 |     13 |    x3.6 |
+| future_naive   |       5 |    1.0 |    3.4 |    7.3 |     12 |    x3.9 |
+| future_naive   |       6 |    0.9 |    3.2 |    6.9 |     12 |    x4.1 |
+| future_naive   |       7 |    0.9 |    3.0 |    6.4 |     11 |    x4.3 |
+| future_naive   |       8 |    0.8 |    2.8 |    6.1 |     11 |    x4.6 |
+| forkjoin_naive |       1 |    3.6 |     13 |     29 |     50 |
+| forkjoin_naive |       2 |    1.9 |    6.7 |     14 |     25 |    x2.0 |
+| forkjoin_naive |       3 |    1.3 |    4.7 |    9.9 |     17 |    x2.9 |
+| forkjoin_naive |       4 |    1.1 |    3.7 |    7.9 |     13 |    x3.6 |
+| forkjoin_naive |       5 |    1.0 |    3.4 |    7.3 |     13 |    x3.8 |
+| forkjoin_naive |       6 |    0.9 |    3.2 |    6.8 |     12 |    x4.1 |
+| forkjoin_naive |       7 |    0.9 |    3.1 |    6.3 |     11 |    x4.3 |
+| forkjoin_naive |       8 |    0.9 |    2.8 |    6.2 |     10 |    x4.6 |
 
 ## Optimized Naive
 

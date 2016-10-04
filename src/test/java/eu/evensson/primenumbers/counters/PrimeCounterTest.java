@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +26,7 @@ public class PrimeCounterTest {
 				new SievePrimeCounter(maxPrime -> new LongArrayPrimeList(maxPrime)),
 				new NaivePrimeCounter(),
 				new FutureNaivePrimeCounter(Executors.newWorkStealingPool()),
+				new ForkJoinNaivePrimeCounter(ForkJoinPool.commonPool()),
 				new OptimizedNaivePrimeCounter(),
 				new RememberingPrimeCounter());
 	}
