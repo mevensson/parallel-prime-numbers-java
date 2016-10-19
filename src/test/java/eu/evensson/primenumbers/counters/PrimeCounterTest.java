@@ -28,6 +28,7 @@ public class PrimeCounterTest {
 				new FutureNaivePrimeCounter(Executors.newWorkStealingPool()),
 				new ForkJoinNaivePrimeCounter(ForkJoinPool.commonPool()),
 				new OptimizedNaivePrimeCounter(),
+				new StreamNaivePrimeCounter(),
 				new RememberingPrimeCounter());
 	}
 

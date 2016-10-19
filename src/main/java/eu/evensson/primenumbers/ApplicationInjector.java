@@ -13,6 +13,7 @@ import eu.evensson.primenumbers.counters.OptimizedNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.PrimeCounter;
 import eu.evensson.primenumbers.counters.RememberingPrimeCounter;
 import eu.evensson.primenumbers.counters.SievePrimeCounter;
+import eu.evensson.primenumbers.counters.StreamNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.primelists.BitSetPrimeList;
 import eu.evensson.primenumbers.counters.primelists.LongArrayPrimeList;
 import eu.evensson.primenumbers.counters.primelists.PrimeList;
@@ -42,6 +43,7 @@ public class ApplicationInjector {
 		primeCounterMap.put("forkjoin_naive_6", injectForkJoinNaivePrimeCounter(6));
 		primeCounterMap.put("forkjoin_naive_7", injectForkJoinNaivePrimeCounter(7));
 		primeCounterMap.put("forkjoin_naive_8", injectForkJoinNaivePrimeCounter(8));
+		primeCounterMap.put("stream_naive", injectStreamNaivePrimeCounter());
 		primeCounterMap.put("opt_naive", injectOptimizedNaivePrimeCounter());
 		primeCounterMap.put("remembering", injectRememberingPrimeCounter());
 		primeCounterMap.put("bitset_sieve", injectBitSetSievePrimeCounter());
@@ -63,6 +65,10 @@ public class ApplicationInjector {
 
 	private static ForkJoinPool injectForkJoinPool(final int threads) {
 		return new ForkJoinPool(threads);
+	}
+
+	private static PrimeCounter injectStreamNaivePrimeCounter() {
+		return new StreamNaivePrimeCounter();
 	}
 
 	private static PrimeCounter injectOptimizedNaivePrimeCounter() {

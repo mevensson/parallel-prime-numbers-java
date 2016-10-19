@@ -21,6 +21,7 @@
 | forkjoin_naive |       6 |    0.9 |    3.2 |    6.8 |     12 |    x4.1 |
 | forkjoin_naive |       7 |    0.9 |    3.1 |    6.3 |     11 |    x4.3 |
 | forkjoin_naive |       8 |    0.9 |    2.8 |    6.2 |     10 |    x4.6 |
+| stream_naive   |     n/a |    3.6 |     13 |     28 |     49 |
 
 ## Optimized Naive
 
