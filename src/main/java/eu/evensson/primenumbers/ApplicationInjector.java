@@ -10,6 +10,7 @@ import eu.evensson.primenumbers.counters.ForkJoinNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.FutureNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.NaivePrimeCounter;
 import eu.evensson.primenumbers.counters.OptimizedNaivePrimeCounter;
+import eu.evensson.primenumbers.counters.ParallelStreamNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.PrimeCounter;
 import eu.evensson.primenumbers.counters.RememberingPrimeCounter;
 import eu.evensson.primenumbers.counters.SievePrimeCounter;
@@ -44,6 +45,14 @@ public class ApplicationInjector {
 		primeCounterMap.put("forkjoin_naive_7", injectForkJoinNaivePrimeCounter(7));
 		primeCounterMap.put("forkjoin_naive_8", injectForkJoinNaivePrimeCounter(8));
 		primeCounterMap.put("stream_naive", injectStreamNaivePrimeCounter());
+		primeCounterMap.put("par_stream_naive_1", injectParallelStreamNaivePrimeCounter(1));
+		primeCounterMap.put("par_stream_naive_2", injectParallelStreamNaivePrimeCounter(2));
+		primeCounterMap.put("par_stream_naive_3", injectParallelStreamNaivePrimeCounter(3));
+		primeCounterMap.put("par_stream_naive_4", injectParallelStreamNaivePrimeCounter(4));
+		primeCounterMap.put("par_stream_naive_5", injectParallelStreamNaivePrimeCounter(5));
+		primeCounterMap.put("par_stream_naive_6", injectParallelStreamNaivePrimeCounter(6));
+		primeCounterMap.put("par_stream_naive_7", injectParallelStreamNaivePrimeCounter(7));
+		primeCounterMap.put("par_stream_naive_8", injectParallelStreamNaivePrimeCounter(8));
 		primeCounterMap.put("opt_naive", injectOptimizedNaivePrimeCounter());
 		primeCounterMap.put("remembering", injectRememberingPrimeCounter());
 		primeCounterMap.put("bitset_sieve", injectBitSetSievePrimeCounter());
@@ -69,6 +78,10 @@ public class ApplicationInjector {
 
 	private static PrimeCounter injectStreamNaivePrimeCounter() {
 		return new StreamNaivePrimeCounter();
+	}
+
+	private static PrimeCounter injectParallelStreamNaivePrimeCounter(final int threads) {
+		return new ParallelStreamNaivePrimeCounter(injectForkJoinPool(threads));
 	}
 
 	private static PrimeCounter injectOptimizedNaivePrimeCounter() {

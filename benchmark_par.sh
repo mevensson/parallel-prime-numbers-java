@@ -2,11 +2,13 @@
 
 algorithm=$1
 shift
+minthreads=$1
+shift
 maxthreads=$1
 shift
 maxprimelist=$@
 
-for ((threads=1; threads <= $maxthreads; threads++)); do
+for ((threads = $minthreads; threads <= $maxthreads; threads++)); do
 	algorithmname=${algorithm}_${threads}
 	echo "Algorithm Name: $algorithmname"
 	for maxprime in $maxprimelist; do
@@ -14,5 +16,7 @@ for ((threads=1; threads <= $maxthreads; threads++)); do
 		echo "Max Prime: $maxprime"
 		echo "Threads:   $threads"
 		sudo perf stat java -jar build/libs/prime-numbers.jar $maxprime $algorithmname
+		echo "Sleeping..."
+		sleep 10
 	done
 done

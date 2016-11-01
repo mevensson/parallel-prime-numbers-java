@@ -29,6 +29,7 @@ public class PrimeCounterTest {
 				new ForkJoinNaivePrimeCounter(ForkJoinPool.commonPool()),
 				new OptimizedNaivePrimeCounter(),
 				new StreamNaivePrimeCounter(),
+				new ParallelStreamNaivePrimeCounter(ForkJoinPool.commonPool()),
 				new RememberingPrimeCounter());
 	}
 
