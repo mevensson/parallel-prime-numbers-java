@@ -28,6 +28,9 @@ public class PrimeCounterTest {
 				new FutureSievePrimeCounter(
 						Executors.newWorkStealingPool(),
 						maxPrime -> new BoolArrayPrimeList(maxPrime)),
+				new ForkJoinSievePrimeCounter(
+						ForkJoinPool.commonPool(),
+						maxPrime -> new BoolArrayPrimeList(maxPrime)),
 				new NaivePrimeCounter(),
 				new FutureNaivePrimeCounter(Executors.newWorkStealingPool()),
 				new ForkJoinNaivePrimeCounter(ForkJoinPool.commonPool()),

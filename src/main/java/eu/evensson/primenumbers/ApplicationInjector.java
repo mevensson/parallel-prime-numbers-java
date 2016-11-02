@@ -8,6 +8,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.function.Function;
 
 import eu.evensson.primenumbers.counters.ForkJoinNaivePrimeCounter;
+import eu.evensson.primenumbers.counters.ForkJoinSievePrimeCounter;
 import eu.evensson.primenumbers.counters.FutureNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.FutureSievePrimeCounter;
 import eu.evensson.primenumbers.counters.NaivePrimeCounter;
@@ -69,6 +70,14 @@ public class ApplicationInjector {
 		primeCounterMap.put("future_boolarr_sieve_6", injectBoolArrayFutureSievePrimeCounter(6));
 		primeCounterMap.put("future_boolarr_sieve_7", injectBoolArrayFutureSievePrimeCounter(7));
 		primeCounterMap.put("future_boolarr_sieve_8", injectBoolArrayFutureSievePrimeCounter(8));
+		primeCounterMap.put("forkjoin_boolarr_sieve_1", injectBoolArrayForkJoinSievePrimeCounter(1));
+		primeCounterMap.put("forkjoin_boolarr_sieve_2", injectBoolArrayForkJoinSievePrimeCounter(2));
+		primeCounterMap.put("forkjoin_boolarr_sieve_3", injectBoolArrayForkJoinSievePrimeCounter(3));
+		primeCounterMap.put("forkjoin_boolarr_sieve_4", injectBoolArrayForkJoinSievePrimeCounter(4));
+		primeCounterMap.put("forkjoin_boolarr_sieve_5", injectBoolArrayForkJoinSievePrimeCounter(5));
+		primeCounterMap.put("forkjoin_boolarr_sieve_6", injectBoolArrayForkJoinSievePrimeCounter(6));
+		primeCounterMap.put("forkjoin_boolarr_sieve_7", injectBoolArrayForkJoinSievePrimeCounter(7));
+		primeCounterMap.put("forkjoin_boolarr_sieve_8", injectBoolArrayForkJoinSievePrimeCounter(8));
 		return primeCounterMap;
 	}
 
@@ -135,6 +144,12 @@ public class ApplicationInjector {
 	private static PrimeCounter injectBoolArrayFutureSievePrimeCounter(final int threads) {
 		return new FutureSievePrimeCounter(
 				injectWorkStealingPool(threads),
+				injectBoolArrayPrimeListFactory());
+	}
+
+	private static PrimeCounter injectBoolArrayForkJoinSievePrimeCounter(final int threads) {
+		return new ForkJoinSievePrimeCounter(
+				injectForkJoinPool(threads),
 				injectBoolArrayPrimeListFactory());
 	}
 
