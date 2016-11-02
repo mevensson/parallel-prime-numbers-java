@@ -6,7 +6,7 @@ public class LongArrayPrimeList implements PrimeList {
 	}
 
 	private static int bitIndex(final long n) {
-		return (int) ((n -2) % 64);
+		return (int) ((n - 2) % 64);
 	}
 
 	private final long[] longArray;

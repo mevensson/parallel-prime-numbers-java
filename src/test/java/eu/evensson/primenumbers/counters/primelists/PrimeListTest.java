@@ -23,7 +23,8 @@ public class PrimeListTest {
 	@DataPoints
 	public static PrimeListFactory[] primeListFactories = new PrimeListFactory[] {
 			maxPrime -> new BitSetPrimeList(maxPrime),
-			maxPrime -> new LongArrayPrimeList(maxPrime)
+			maxPrime -> new LongArrayPrimeList(maxPrime),
+			maxPrime -> new BoolArrayPrimeList(maxPrime)
 	};
 
 	@DataPoints

@@ -14,6 +14,7 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 import eu.evensson.primenumbers.counters.primelists.BitSetPrimeList;
+import eu.evensson.primenumbers.counters.primelists.BoolArrayPrimeList;
 import eu.evensson.primenumbers.counters.primelists.LongArrayPrimeList;
 
 @RunWith(Parameterized.class)
@@ -24,6 +25,9 @@ public class PrimeCounterTest {
 		return asList(
 				new SievePrimeCounter(maxPrime -> new BitSetPrimeList(maxPrime)),
 				new SievePrimeCounter(maxPrime -> new LongArrayPrimeList(maxPrime)),
+				new FutureSievePrimeCounter(
+						Executors.newWorkStealingPool(),
+						maxPrime -> new BoolArrayPrimeList(maxPrime)),
 				new NaivePrimeCounter(),
 				new FutureNaivePrimeCounter(Executors.newWorkStealingPool()),
 				new ForkJoinNaivePrimeCounter(ForkJoinPool.commonPool()),
