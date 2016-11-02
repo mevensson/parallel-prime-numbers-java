@@ -15,7 +15,7 @@ for ((threads = $minthreads; threads <= $maxthreads; threads++)); do
 		echo "Algorithm: $algorithm"
 		echo "Max Prime: $maxprime"
 		echo "Threads:   $threads"
-		sudo perf stat java -jar build/libs/prime-numbers.jar $maxprime $algorithmname
+		sudo perf stat --detailed java -jar build/libs/prime-numbers.jar $maxprime $algorithmname
 		echo "Sleeping..."
 		sleep 10
 	done

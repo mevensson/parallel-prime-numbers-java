@@ -9,6 +9,7 @@ import java.util.function.Function;
 
 import eu.evensson.primenumbers.counters.ForkJoinNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.ForkJoinSievePrimeCounter;
+import eu.evensson.primenumbers.counters.Future2SievePrimeCounter;
 import eu.evensson.primenumbers.counters.FutureNaivePrimeCounter;
 import eu.evensson.primenumbers.counters.FutureSievePrimeCounter;
 import eu.evensson.primenumbers.counters.NaivePrimeCounter;
@@ -70,6 +71,14 @@ public class ApplicationInjector {
 		primeCounterMap.put("future_boolarr_sieve_6", injectBoolArrayFutureSievePrimeCounter(6));
 		primeCounterMap.put("future_boolarr_sieve_7", injectBoolArrayFutureSievePrimeCounter(7));
 		primeCounterMap.put("future_boolarr_sieve_8", injectBoolArrayFutureSievePrimeCounter(8));
+		primeCounterMap.put("future2_boolarr_sieve_1", injectBoolArrayFuture2SievePrimeCounter(1));
+		primeCounterMap.put("future2_boolarr_sieve_2", injectBoolArrayFuture2SievePrimeCounter(2));
+		primeCounterMap.put("future2_boolarr_sieve_3", injectBoolArrayFuture2SievePrimeCounter(3));
+		primeCounterMap.put("future2_boolarr_sieve_4", injectBoolArrayFuture2SievePrimeCounter(4));
+		primeCounterMap.put("future2_boolarr_sieve_5", injectBoolArrayFuture2SievePrimeCounter(5));
+		primeCounterMap.put("future2_boolarr_sieve_6", injectBoolArrayFuture2SievePrimeCounter(6));
+		primeCounterMap.put("future2_boolarr_sieve_7", injectBoolArrayFuture2SievePrimeCounter(7));
+		primeCounterMap.put("future2_boolarr_sieve_8", injectBoolArrayFuture2SievePrimeCounter(8));
 		primeCounterMap.put("forkjoin_boolarr_sieve_1", injectBoolArrayForkJoinSievePrimeCounter(1));
 		primeCounterMap.put("forkjoin_boolarr_sieve_2", injectBoolArrayForkJoinSievePrimeCounter(2));
 		primeCounterMap.put("forkjoin_boolarr_sieve_3", injectBoolArrayForkJoinSievePrimeCounter(3));
@@ -144,6 +153,12 @@ public class ApplicationInjector {
 	private static PrimeCounter injectBoolArrayFutureSievePrimeCounter(final int threads) {
 		return new FutureSievePrimeCounter(
 				injectWorkStealingPool(threads),
+				injectBoolArrayPrimeListFactory());
+	}
+
+	private static PrimeCounter injectBoolArrayFuture2SievePrimeCounter(final int threads) {
+		return new Future2SievePrimeCounter(
+				injectForkJoinPool(threads),
 				injectBoolArrayPrimeListFactory());
 	}
 
