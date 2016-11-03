@@ -51,9 +51,14 @@
 
 ## Boolean Array Sieve
 
-| Algorithm            | threads |   10^8 |   10^9 | 2*10^9 |
-| -------------------- |--------:|-------:|-------:|-------:|
-| boolarr_sieve        |     n/a |    1.0 |     11 |     24 |
+| Algorithm             | threads |   10^8 |   10^9 | 2*10^9 | Speedup |
+| --------------------- |--------:|-------:|-------:|-------:|--------:|
+| boolarr_sieve         |     n/a |    1.0 |     11 |     24 |
+| future2_boolarr_sieve |       1 |    1.0 |     12 |     25 |
+| future2_boolarr_sieve |       2 |    0.9 |    9.0 |     19 |   x1.25 |
+| future2_boolarr_sieve |       3 |    0.9 |    8.5 |     18 |   x1.30 |
+| future2_boolarr_sieve |       4 |    0.9 |    9.0 |     19 |   x1.25 |
+| future2_boolarr_sieve |       5 |    0.9 |    8.9 |     19 |   x1.25 |
 
 ## Long Array Sieve
 
